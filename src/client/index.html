@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>PixelTracker | Home</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        pre {
+            font-family: Courier New, Courier, monospace;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Home Page</h1>
+    <p>Welcome to the PixelTracker home page!</p>
+
+    <a href="about.html">ABOUT</a> | <a href="contact.html">CONTACT</a>
+
+    <script type="text/javascript">
+
+    function map (obj, callback) {
+        var arr = [];
+        for (var key in obj) {
+            arr.push(callback(key, obj[key]));
+        }
+        return arr;
+    }
+
+    $.ajax('http://localhost:3000/stats').done((data) => {
+        var pre = document.createElement('pre');
+        console.log(data.pages);
+        pre.innerHTML = `
+---- VIEWS BY PAGE ----
+${map(data.pages, (page, views) => `- ${page}: ${views}`).join('\n')}
+
+----- VIEWS BY IP -----
+${map(data.ips, (ip, views) => `- ${ip}: ${views}`).join('\n')}
+`
+        document.body.appendChild(pre);
+    });
+
+    </script>
+
+    <img src="http://localhost:3000/pixel.gif?page=home" alt="">
+</body>
+
+</html>

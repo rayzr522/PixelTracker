@@ -1,0 +1,21 @@
+{
+  "name": "pixel-tracker",
+  "version": "1.0.0",
+  "description": "A custom pixel-tracker test",
+  "main": "src/server/index.js",
+  "repository": "https://github.com/Rayzr522/PixelTracker",
+  "author": "Rayzr522 <rayzr522@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^3.13.1",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1"
+  },
+  "scripts": {
+    "server": "gulp"
+  }
+}
